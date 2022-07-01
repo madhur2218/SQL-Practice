@@ -1,0 +1,177 @@
+/*DQL commands */
+
+Select * From payment
+Select * From customer
+
+//Selecting multiple columns from table
+
+Select customer_id,first_name From customer
+Select email,address_id From customer
+
+Select customer_id,amount From payment
+Select rental_id From payment
+
+//Using Distinct operator
+Select * From film
+Select Distinct(title) From film
+
+Select * From country
+Select * From city
+Select Distinct(country,last_update) From country
+Select Distinct(city,country_id) From city
+
+//Using Count and Count with Distinct
+
+Select * From rental
+Select * From store
+
+Select Count(customer_id) From rental
+Select Distinct(Count(customer_id)) From rental
+
+Select Count(staff_id) From rental
+Select Count(Distinct(staff_id)) FROM rental
+
+Select Count(Distinct (first_name)) From customer
+Select Count (first_name) From customer
+Select Count (*) From customer
+
+//Where challenge 
+
+Select * From language
+Where name= 'French'
+
+Select * From customer
+Select * From customer 
+Where first_name = 'Linda' and last_name = 'Smith'
+
+Select * From payment
+Where staff_id = 2 and amount Between 4.3 and 5
+
+Select * From payment
+Where customer_id = 341
+
+Select customer_id From payment
+Where rental_id >1849 And rental_id <2829
+
+Select Distinct(customer_id) From payment
+Where rental_id >1849 And rental_id <2829
+
+Select * From film
+Where rental_rate != '4.99'
+
+Select * From film
+Where rating = 'PG' AND rental_duration=7 
+And release_year = 2006;
+
+
+Select email From customer
+Where first_name='Nancy'
+
+Select description From film
+Where title = 'Outlaw Hanky';
+
+//Order By clause and Limit
+
+Select * From customer
+Order By first_name;
+
+Select * From customer
+Order By address_id DESC
+
+Select * From film
+Where length>50 AND rating= 'PG-13' AND rental_duration>4.99
+Order By title ASC;
+
+Select * From payment
+Where staff_id=1 and amount= 1.99 
+Order By customer_id ASC
+
+Select * From film
+Where length>50 AND rating= 'PG-13' AND rental_duration>4.99
+Order By title ASC
+Limit 5;
+
+
+Select * From city
+Order By country_id DESC
+Limit 5;
+
+Select customer_id From payment
+Order By payment_date Desc
+Limit 10;
+
+
+Select title, length From film
+Order By length ASC
+Limit 5;
+
+Select Count(Distinct(title)) From film
+Where length <=50
+
+//Between Clause 
+
+Select Count(*) From payment
+Where payment_date BETWEEN '2007-02-15' AND '2007-05-13'
+
+Select * From payment
+Where payment_date BETWEEN '2007-02-15' AND '2007-05-13'
+
+Select * From customer
+Where address_id BETWEEN 6 AND 9
+
+sELECT * fROM category
+Where last_update Between '2006-02-15' AND '2006-05-30'
+
+Select * From country
+Where  last_update Between '2006-02-15' AND '2006-08-15'
+
+//IN Clause 
+
+Select * From payment
+Where amount IN (4.99,1.99,5.99)
+Order BY amount ASC
+Limit 5;
+
+Select * From payment 
+Where customer_id IN (311,312,313);
+
+Select * From language 
+Where name IN ('English','Japanese');
+
+//Pattern Matching (LIKE AND ILIKE)
+
+Select * From customer
+Where first_name LIKE '_ared';
+
+Select * From customer
+Where first_name LIKE '_inda';
+
+Select * From customer 
+Where first_name Like '__r%';
+
+Select * From customer 
+Where first_name ILIKE 'S%' AND last_name ILIKE '%N'
+
+
+
+//GENERAL QUESTIONS
+
+Select Count(amount) From payment 
+Where amount > 5
+
+Select * From actor
+Where first_name Ilike 'P%';
+
+Select Count(Distinct(address)) From address;
+Select * From address
+Select Distinct(district) From address;
+
+SELECT * FROM film
+
+Select Count(Distinct(title)) From film 
+Where rating ='R' AND replacement_cost BETWEEN 5 AND 15;
+
+Select Count(*) From film
+Where title ilike '%truman%';
+
+
