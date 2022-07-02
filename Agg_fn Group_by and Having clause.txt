@@ -1,0 +1,121 @@
+//Aggregations functions 
+
+Select Max(address_id) From customer;
+
+Select * From payment
+Select Min(amount) From payment;
+Select Max(amount) From payment;
+
+Select * From film
+Select Min(rental_rate) From film
+Select Max(rental_rate) From film
+Select Count(*) From film
+
+Select Avg(length) From film
+Select Round(Avg(length), 2) From film
+
+Select Round(Sum(rental_rate),1) From film
+
+Select * From payment
+Select Sum(amount) From payment
+
+Count, Avg, Sum, Max, Min 
+
+Select * From payment
+
+Select customer_id, Max(amount) From payment
+Where staff_id =1 
+Group BY customer_id
+Order By customer_id Asc
+
+Select customer_id, Max(amount),payment_date From payment 
+Group BY customer_id ,payment_date
+Order By customer_id Asc
+
+Select customer_id, Max(amount) From payment 
+Group BY customer_id 
+Order By customer_id Asc
+
+Select * From film
+Select rating, avg(rental_rate) From film
+gROUP bY rating 
+
+Select rating, avg(rental_rate) From film
+Where rating IN ('R','PG-13')
+gROUP bY rating 
+
+Select * From film
+Select rating, max(length) From film
+Where rental_duration=5
+Group BY rating
+
+Select inventory_id, Count(store_id) From inventory
+Group By inventory_id
+Order By Count(store_id) DESC
+lIMIT 5;
+
+Select first_name,last_name ,count(address_id) From customer
+Group By first_name ,last_name
+Limit 8;
+
+Select * From payment
+
+Select customer_id,Date(payment_date), Sum(amount) From payment
+Where staff_id=2 AND amount >5.99
+Group by customer_id,Date(payment_date)
+Order By Sum(amount)
+Limit 5;
+
+Select Date(payment_date), Sum(amount) From payment
+Where staff_id=1
+Group By Date(payment_date)
+Order By Sum(amount) DESC
+Limit 5;
+
+Select Date(payment_date), Sum(amount) From payment
+Group By Date(payment_date)
+Order By Sum(amount) DESC;
+
+Select staff_id,Count(payment_id) From payment
+Group By staff_id
+Order By Count(payment_id) DESC;
+
+Select rating,Round(avg(replacement_cost),2) From film
+Group By rating
+Order By avg(replacement_cost)
+Limit 10;
+
+Select * From payment
+Select customer_id, Sum(amount) From payment
+Group By customer_id 
+Order By Sum(amount) DESC
+lIMIT 5;
+
+Select customer_id, Sum(amount) From payment 
+Group By customer_id
+Having Sum(amount) >114
+Order By Sum(amount) DESC
+
+Select store_id, Count(*) From customer
+Group By store_id
+Having Count(*)>200
+
+Select customer_id,Count(Distinct(payment_id)) From payment
+Group By customer_id
+Having Count(Distinct(payment_id)) >40
+
+Select customer_id,Count(*) From payment
+Group By customer_id
+Having Count(*) >40
+
+Select customer_id, Sum(amount) From payment 
+Group By customer_id
+Having Sum(amount)>100
+Order By Sum(amount) DESC
+Limit 5;
+
+
+
+
+ 
+
