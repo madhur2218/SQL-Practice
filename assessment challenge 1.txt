@@ -1,0 +1,18 @@
+//First assessment
+
+Select customer_id , Sum(amount) From payment
+Where staff_id = 2
+Group By customer_id
+Having Sum(amount) > 110;
+
+Select Count(title) From film
+Where title ilike 'J%'
+
+Select first_name , last_name From customer
+Where first_name ilike 'E%' AND address_id<500
+Order By customer_id DESC
+lIMIT 1;
+
+
+
+ 
