@@ -1,0 +1,67 @@
+//AS clause in SQL
+Select * From customer
+Select amount AS gross_amount From payment
+Select first_name AS name , last_name as surname From customer
+
+Select first_name AS name ,last_name as surname From customer 
+Where address_id >50 
+Order By first_name DESC
+lIMIT 2;
+
+Select * From payment
+Select customer_id AS id_customer, staff_id AS id_staff ,SUM(amount) AS total_amount From payment
+Group By customer_id,staff_id
+Having Sum(amount) > 5.99
+Order By customer_id ASC
+Limit 5;
+
+//JOINS (inner, full outer, left ,right)
+
+Select * From payment
+Select * From customer
+
+Select * From customer
+INNER JOIN payment 
+ON customer.customer_id = payment.customer_id
+
+Select * From payment
+INNER JOIN customer
+ON payment.customer_id=customer.customer_id
+Where payment.amount>7.99 AND staff_id=1;
+
+Select * From payment
+Left JOIN customer
+ON payment.customer_id = customer.customer_id
+Where customer.customer_id ISNULL
+
+Select film.film_id,film.title,inventory.inventory_id,inventory.store_id From film
+Left Join inventory
+On film.film_id=inventory.film_id
+Where inventory.film_id ISNULL
+
+//rIGHT oUTER JOIN IS JUST THE OPPOSIT OF lEFT OUTER jOIN 
+
+//challenge questions
+
+Select * From customer
+Select *From address
+
+Select customer.email,address.district From customer
+INNER JOIN address
+ON customer.address_id= address.address_id
+Where district='California'
+
+Select * From film_actor
+Select * From actor
+Select * From film
+
+Select first_name,last_name,title From film
+Full Outer Join film_actor
+On film.film_id=film_actor.film_id
+FULL OUTER JOIN actor
+ON film_actor.actor_id=actor.actor_id
+Where first_name = 'Nick' AND last_name ='Wahlberg'
+
+
+
+
