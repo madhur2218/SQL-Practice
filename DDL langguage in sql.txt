@@ -1,0 +1,105 @@
+Create Table account(
+    user_id Serial Primary Key Not Null Unique,
+    user_name Varchar(20) Not Null,
+    password Varchar(20) Unique Not Null,
+    email Varchar(50) Unique Not Null,
+    created_on Timestamp Not Null,
+    last_login Timestamp Not Null
+
+
+)
+Drop Table account;
+
+
+Create Table job (
+    job_id Serial Primary key,
+    job_name VARCHAR(20) Not Null
+    
+)
+
+Create Table job_account(
+    user_id Integer References account(user_id),
+    job_id Integer References job(job_id),
+    hire_date Timestamp Not  Null
+);
+
+
+Insert Into account(user_id,user_name,password,email,created_on,last_login)
+Values(1,'madhur','1223','madhurnagrath@gmail.com',Current_Timestamp,Current_Timestamp)
+Insert Into account(user_id,user_name,password,email,created_on,last_login)
+Values(2,'malhar','8563','sharma.malhar@gmail.com',Current_Timestamp,Current_Timestamp)
+Insert Into account(user_id,user_name,password,email,created_on,last_login)
+Values(3,'ishant','9634','ishant@yahoo.com',Current_Timestamp,Current_Timestamp)
+Insert Into account(user_id,user_name,password,email,created_on,last_login)
+Values(4,'naman','25410','naman@gmail.com',Current_Timestamp,Current_Timestamp)
+
+Select * From account
+
+
+Update account 
+Set last_login = Current_Timestamp
+
+Update job_account 
+Set hire_date=account.created_on
+From account
+
+Update job_account 
+Set hire_date=account.created_on
+From account
+Where account.user_id=job_account.user_id
+
+Update account
+Set last_login = created_on
+Returning last_login,created_on,email
+
+Delete From job 
+Where job_name ='Cowboy'
+
+Delete From job
+Where job_name = 'Cowboy'
+Returning last_login,created_on,email
+
+Alter Table job 
+Add New Column job_type Varchar(50);
+
+Alter Table job
+Drop Column job_id
+
+Alter Table job_id
+Alter column job_id
+Set Not Null 
+
+Alter Table job_id
+Alter column job_id
+Add Constraint  NotNull 
+
+Create Table information(
+    info_id Serial Primary Key,
+    title Varchar(20) Not Null,
+    person Varchar(20) Not Null
+    
+)
+
+Select * From information
+
+Alter table information 
+Rename To new_info
+
+Alter table new_info
+Rename Column person TO people
+
+Alter table new_info
+Alter column people Drop Not Null;
+
+Alter table new_info
+Alter column people Set Not Null;
+
+Alter table new_info 
+Drop Column title;
+
+Alter Table new_info
+Drop column IF EXISTS title;
+
+Alter Table new_info
+Drop Column title Cascade;
+
